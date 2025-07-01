@@ -59,7 +59,8 @@ int ganhou() {
 
             if (tabuleiro[i][0] == 'X') {
                 return 1;
-            } else {
+            }
+            else {
                 return 2;
             }
         }
@@ -72,7 +73,8 @@ int ganhou() {
 
             if (tabuleiro[0][i] == 'X') {
                 return 1;
-            } else {
+            }
+            else {
                 return 2;
             }
         }
@@ -84,7 +86,8 @@ int ganhou() {
 
         if (tabuleiro[0][0] == 'X') {
             return 1;
-        } else {
+        }
+        else {
             return 2;
         }
     }
@@ -95,37 +98,38 @@ int ganhou() {
 
         if (tabuleiro[0][2] == 'X') {
             return 1;
-        } else {
+        }
+        else{
             return 2;
         }
     }
-
     return 0;
 }
 
 void jogadorJogador() {
     int vencedor = 0;
     int turnos = 0;
-
     while (turnos < 9 && vencedor == 0) {
         int l, c;
 
         if (turnos % 2 == 0) {
-            printf("jogador 1 (X): escolha a posição (linha x coluna): ");
-        } else {
-            printf("jogador 2 (O): escolha a posição (linha x coluna): ");
+            printf("jogador 1 (X): escolha a posição: ");
+        } 
+        else{
+            printf("jogador 2 (O): escolha a posição: ");
         }
 
         scanf("%d %d", &l, &c);
 
-        while (l < 0 || l > 2 || c < 0 || c > 2 || tabuleiro[l][c] != ' ') {
+        while (l < 0 || l > 2 || c < 0 || c > 2 || tabuleiro[l][c] != ' '){
             printf("Posição invalida ou ja ocupada");
             scanf("%d %d", &l, &c);
         }
 
-        if (turnos % 2 == 0) {
+        if(turnos % 2 == 0){
             tabuleiro[l][c] = 'X';
-        } else {
+        }
+        else {
             tabuleiro[l][c] = 'O';
         }
 
@@ -134,38 +138,40 @@ void jogadorJogador() {
         turnos++;
     }
 
-    if (vencedor == 1) {
+    if(vencedor == 1) {
         printf("jogador 1 venceu\n");
-    } else if (vencedor == 2) {
+    }
+    else if (vencedor == 2) {
         printf("jogador 2 venceu\n");
-    } else {
+    }
+    else {
         printf("empate\n");
     }
 }
 
-void jogadorComputador() {
+void jogadorComputador(){
     int vencedor = 0;
     int turnos = 0;
     srand(time(NULL));
 
-    while (turnos < 9 && vencedor == 0) {
+    while (turnos < 9 && vencedor == 0){
         int l, c;
-
         if (turnos % 2 == 0) {
             printf("Jogador (X): Escolha a posição (linha coluna): ");
             scanf("%d %d", &l, &c);
 
-            while (l < 0 || l > 2 || c < 0 || c > 2 || tabuleiro[l][c] != ' ') {
+            while (l < 0 || l > 2 || c < 0 || c > 2 || tabuleiro[l][c] != ' '){
                 printf("Posição inválida ou já ocupada");
                 scanf("%d %d", &l, &c);
             }
 
             tabuleiro[l][c] = 'X';
-        } else {
-            do {
+        } 
+        else{
+            do{
                 l = rand() % 3;
                 c = rand() % 3;
-            } while (tabuleiro[l][c] != ' ');
+            }while (tabuleiro[l][c] != ' ');
 
             printf("Computador (O) jogou em: %d %d\n", l, c);
             tabuleiro[l][c] = 'O';
@@ -176,11 +182,13 @@ void jogadorComputador() {
         turnos++;
     }
 
-    if (vencedor == 1) {
-        printf("Você venceu!\n");
-    } else if (vencedor == 2) {
-        printf("O computador venceu!\n");
-    } else {
-        printf("Empate!\n");
+    if(vencedor == 1) {
+        printf("Você venceu\n");
+    }
+    else if(vencedor == 2) {
+        printf("O computador venceu\n");
+    }
+    else{
+        printf("Empate");
     }
 }
